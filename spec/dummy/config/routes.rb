@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  mount I18nDebugPage::Engine => "/i18n_debug_page"
+  get 'home/index'
+
+  mount I18nDebugPage::Engine => "/"
 end
