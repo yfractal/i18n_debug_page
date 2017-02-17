@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>I18n debug page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css" media="screen">
+      body {
+          line-height: 2rem;
+          font-family: sans;
+          font-size: 14px;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 0;
+          color: #000;
+          text-align: center;
+      }
+
+      a {
+          color: #333;
+      }
+
+      h1 {
+          font-weight: normal;
+          line-height: 2.8rem;
+          font-size: 30px;
+          letter-spacing: -1px;
+          text-align: center;
+          color: #333;
+      }
+
+      .container {
+          width: 960px;
+          margin: 40px auto;
+          text-align: left;
+          overflow: hidden;
+      }
+
+      .i18n_debug_logs {
+          background: #FFF;
+          width: 100%;
+          border-radius: 5px;
+      }
+
+      .i18n_debug_logs h1 {
+          border-radius: 5px 5px 0 0;
+          background: #f9f9f9;
+          padding: 10px;
+          border-bottom: 1px solid #eee;
+      }
+
+      .i18n_debug_logs .i18n_debug_log {
+          font-size: 14px;
+          border-bottom: 1px solid #eee;
+          padding: 15px;
+      }
+
+      .i18n_debug_logs .i18n_debug_log:last-child {
+          border-bottom: 0px;
+      }
+
+      .i18n_debug_logs .name {
+          font-size: 20px;
+          margin-right: 20px;
+          min-width: 100px;
+          font-weight: bold;
+          color: #555;
+      }
+      .i18n_debug_logs .result {
+        font-size: 14px;
+        float: right;
+        color: #45b81d;
+      }
+      .i18n_debug_logs .missing {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="i18n_debug_logs">
+        <h1>I18n Debug Page</h1>
+        <% @i18n_debug_logs.each do |i18n_debug_log| %>
+        <div class="i18n_debug_log">
+          <div class="">
+            <span class="name"><%= i18n_debug_log[:key] %></span>
+            <span class="result <%= i18n_debug_log[:result] || 'missing' %>">
+              <%= i18n_debug_log[:result].inspect %>
+            </span>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </body>
+</html>
