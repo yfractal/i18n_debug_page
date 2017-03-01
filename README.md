@@ -12,7 +12,7 @@ But the log is mixed in rails log and most time the log is really long. It's bet
 
 ```ruby
 # Gemfile
-gem 'i18n_debug_page'
+gem 'i18n_debug_page', '~> 0.1.1', group: :development
 ```
 
 Run:
@@ -21,10 +21,18 @@ Run:
 $ bundle install
 ```
 
+Include `I18nDebugPage` in `ApplicationController`
+
+```
+# app/controllers/application_controller.rb
+include I18nDebugPage if defined? I18nDebugPage
+
+```
+
 Mount the engine
 ```ruby
 # config/routes.rb
-mount I18nDebugPage::Engine => "/"
+mount I18nDebugPage::Engine => "/" if Rails.env.development?
 ```
 
 Then you can find i18n debug log in path `/i18n_debug_logs`
